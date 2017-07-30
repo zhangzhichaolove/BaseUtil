@@ -8,7 +8,7 @@ import com.chao.baselib.base.BaseActivity;
 import com.chao.baselib.log.LogUtils;
 import com.chao.baselib.variable.ScreenVar;
 
-public class MainActivity extends BaseActivity {
+public class MainActivityTwo extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.tv_startActivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MainActivityTwo.class));
+                startActivity(new Intent(MainActivityTwo.this, MainActivityTwo.class));
             }
         });
     }

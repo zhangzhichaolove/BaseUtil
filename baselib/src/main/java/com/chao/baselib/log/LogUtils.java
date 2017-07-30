@@ -2,7 +2,6 @@ package com.chao.baselib.log;
 
 import android.util.Log;
 
-
 import com.chao.baselib.config.BaseConfig;
 
 import org.json.JSONArray;
