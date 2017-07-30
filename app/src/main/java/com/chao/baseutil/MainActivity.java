@@ -13,7 +13,15 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView() {
         LogUtils.showTagE("-----" + ScreenVar.getScreenWidth());
         LogUtils.showTagE("-----" + ScreenVar.getScreenHeight());
         LogUtils.showTagE("-----" + ScreenVar.getStatusHeight());
