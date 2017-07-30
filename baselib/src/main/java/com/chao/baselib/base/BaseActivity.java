@@ -14,7 +14,7 @@ import com.chao.baselib.injection.FindView;
  * Created by Chao on 2017/7/30.
  */
 
-public class BaseActivity extends AppCompatActivity implements SwipeBackHelper.Delegate {
+public abstract class BaseActivity extends AppCompatActivity implements ActivityInterface, SwipeBackHelper.Delegate {
     protected SwipeBackHelper mSwipeBackHelper;
     protected Toolbar toolbar;
     private FrameLayout base_content;
@@ -105,11 +105,5 @@ public class BaseActivity extends AppCompatActivity implements SwipeBackHelper.D
         mSwipeBackHelper.backward();
     }
 
-    public int getLayout() {
-        return 0;
-    }
 
-    protected void initView() {
-
-    }
 }
