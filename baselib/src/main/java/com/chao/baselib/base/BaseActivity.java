@@ -4,13 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.chao.baselib.R;
 import com.chao.baselib.backlayout.SwipeBackHelper;
 import com.chao.baselib.injection.FindView;
-import com.chao.baselib.injection.Id;
 
 /**
  * Created by Chao on 2017/7/30.
@@ -28,6 +26,7 @@ public class BaseActivity extends AppCompatActivity implements SwipeBackHelper.D
         setContentView(R.layout.base_layout);
         base_content = (FrameLayout) findViewById(R.id.fl_base_content);
         toolbar = (Toolbar) findViewById(R.id.tl_base_toolbar);
+        setSupportActionBar(toolbar);
         if (getLayout() != 0) {
             base_content.addView(getLayoutInflater().inflate(getLayout(), null));
         }
