@@ -21,7 +21,7 @@ public class MainActivityTwo extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    public void initView() {
         toolbar.setTitle("这是标题");
         LogUtils.showTagE("-----" + ScreenVar.getScreenWidth());
         LogUtils.showTagE("-----" + ScreenVar.getScreenHeight());

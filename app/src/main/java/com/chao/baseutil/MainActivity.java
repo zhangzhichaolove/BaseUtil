@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    public void initView() {
         LogUtils.showTagE("-----" + ScreenVar.getScreenWidth());
         LogUtils.showTagE("-----" + ScreenVar.getScreenHeight());
         LogUtils.showTagE("-----" + ScreenVar.getStatusHeight());
