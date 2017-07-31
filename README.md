@@ -10,4 +10,5 @@ Register in Application: MainInit.getInstance (). Init (this);
   BaseConfig.setBackFinish (false);
 ...
 ```
+![image](https://github.com/zhangzhichaolove/BaseUtil/blob/master/image/home.png) 
 # More features look forward to everyone put forward. The The
