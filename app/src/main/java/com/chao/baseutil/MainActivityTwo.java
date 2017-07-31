@@ -1,6 +1,7 @@
 package com.chao.baseutil;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -40,5 +41,6 @@ public class MainActivityTwo extends BaseActivity {
                 startActivity(new Intent(MainActivityTwo.this, MainActivityTwo.class));
             }
         });
+        statusBar.setBackgroundColor(Color.GREEN);
     }
 }
