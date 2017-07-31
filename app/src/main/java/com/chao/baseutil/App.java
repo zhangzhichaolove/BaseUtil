@@ -15,8 +15,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        BaseConfig.setDeBug(true);
         MainInit.getInstance().init(this);
-        SwipeBackManager.getInstance().init(this);
+        BaseConfig.setDeBug(true);
+        BaseConfig.setBackFinish(true);
     }
 }

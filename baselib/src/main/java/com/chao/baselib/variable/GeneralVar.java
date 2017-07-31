@@ -1,10 +1,14 @@
 package com.chao.baselib.variable;
 
+import android.app.Application;
+
 /**
+ * 通用变量
  * Created by Chao on 2017/7/30.
  */
 
-public class ScreenVar {
+public class GeneralVar {
+    private static Application application;
     private static int screenWidth;
     private static int screenHeight;
     private static int statusHeight;
@@ -15,7 +19,7 @@ public class ScreenVar {
     }
 
     public static void setScreenWidth(int screenWidth) {
-        ScreenVar.screenWidth = screenWidth;
+        GeneralVar.screenWidth = screenWidth;
     }
 
     public static int getScreenHeight() {
@@ -23,7 +27,7 @@ public class ScreenVar {
     }
 
     public static void setScreenHeight(int screenHeight) {
-        ScreenVar.screenHeight = screenHeight;
+        GeneralVar.screenHeight = screenHeight;
     }
 
     public static int getStatusHeight() {
@@ -31,6 +35,14 @@ public class ScreenVar {
     }
 
     public static void setStatusHeight(int statusHeight) {
-        ScreenVar.statusHeight = statusHeight;
+        GeneralVar.statusHeight = statusHeight;
+    }
+
+    public static Application getApplication() {
+        return application;
+    }
+
+    public static void setApplication(Application application) {
+        GeneralVar.application = application;
     }
 }

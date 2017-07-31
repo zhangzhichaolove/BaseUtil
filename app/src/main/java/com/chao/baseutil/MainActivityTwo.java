@@ -4,12 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.TextView;
 
 import com.chao.baselib.base.BaseActivity;
+import com.chao.baselib.injection.Id;
 import com.chao.baselib.log.LogUtils;
-import com.chao.baselib.variable.ScreenVar;
+import com.chao.baselib.variable.GeneralVar;
 
 public class MainActivityTwo extends BaseActivity {
+    @Id(R.id.tv_startActivity)
+    TextView tv_startActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +31,10 @@ public class MainActivityTwo extends BaseActivity {
         toolbar.setTitleColor(ContextCompat.getColor(this, R.color.colorAccent));
         toolbar.setRightText("更多");
         toolbar.setRightColor(ContextCompat.getColor(this, R.color.colorAccent));
-        LogUtils.showTagE("-----" + ScreenVar.getScreenWidth());
-        LogUtils.showTagE("-----" + ScreenVar.getScreenHeight());
-        LogUtils.showTagE("-----" + ScreenVar.getStatusHeight());
-        findViewById(R.id.tv_startActivity).setOnClickListener(new View.OnClickListener() {
+        LogUtils.showTagE("-----" + GeneralVar.getScreenWidth());
+        LogUtils.showTagE("-----" + GeneralVar.getScreenHeight());
+        LogUtils.showTagE("-----" + GeneralVar.getStatusHeight());
+        tv_startActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivityTwo.this, MainActivityTwo.class));

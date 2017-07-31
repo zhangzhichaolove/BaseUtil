@@ -2,16 +2,16 @@ package com.chao.baselib.init;
 
 import android.app.Application;
 
+import com.chao.baselib.backlayout.SwipeBackManager;
+import com.chao.baselib.config.BaseConfig;
 import com.chao.baselib.util.ScreenUtils;
-import com.chao.baselib.variable.ScreenVar;
+import com.chao.baselib.variable.GeneralVar;
 
 /**
  * Created by Chao on 2017/7/30.
  */
 
 public class MainInit {
-    private Application application;
-
     private static MainInit instance;
 
     private MainInit() {
@@ -29,10 +29,10 @@ public class MainInit {
     }
 
     public void init(Application application) {
-        this.application = application;
-        ScreenVar.setScreenWidth(ScreenUtils.getScreenWidth(application));
-        ScreenVar.setScreenHeight(ScreenUtils.getScreenHeight(application));
-        ScreenVar.setStatusHeight(ScreenUtils.getStatusHeight(application));
+        GeneralVar.setApplication(application);
+        GeneralVar.setScreenWidth(ScreenUtils.getScreenWidth(application));
+        GeneralVar.setScreenHeight(ScreenUtils.getScreenHeight(application));
+        GeneralVar.setStatusHeight(ScreenUtils.getStatusHeight(application));
     }
 
 }

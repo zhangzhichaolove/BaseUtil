@@ -14,7 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.chao.baselib.variable.ScreenVar;
+import com.chao.baselib.variable.GeneralVar;
 
 public class WindowUtils {
 
@@ -26,7 +26,7 @@ public class WindowUtils {
 
             // First translucent status bar.
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            int statusBarHeight = ScreenVar.getStatusHeight();
+            int statusBarHeight = GeneralVar.getStatusHeight();
 
             View mChildView = mContentView.getChildAt(0);
             if (mChildView != null) {
