@@ -2,6 +2,7 @@ package com.chao.baseutil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import com.chao.baselib.base.BaseActivity;
@@ -22,7 +23,10 @@ public class MainActivityTwo extends BaseActivity {
 
     @Override
     public void initView() {
-        toolbar.setTitle("这是标题");
+        toolbar.setTitle("新页面标题");
+        toolbar.setTitleColor(ContextCompat.getColor(this, R.color.colorAccent));
+        toolbar.setRightText("更多");
+        toolbar.setRightColor(ContextCompat.getColor(this, R.color.colorAccent));
         LogUtils.showTagE("-----" + ScreenVar.getScreenWidth());
         LogUtils.showTagE("-----" + ScreenVar.getScreenHeight());
         LogUtils.showTagE("-----" + ScreenVar.getStatusHeight());

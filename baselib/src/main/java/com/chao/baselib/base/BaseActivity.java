@@ -3,20 +3,21 @@ package com.chao.baselib.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.chao.baselib.R;
 import com.chao.baselib.backlayout.SwipeBackHelper;
 import com.chao.baselib.injection.FindView;
+import com.chao.baselib.view.CustomToolbar;
 
 /**
  * Created by Chao on 2017/7/30.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements ActivityInterface, SwipeBackHelper.Delegate {
+public abstract class BaseActivity extends AppCompatActivity implements ActivityInterface, SwipeBackHelper.Delegate, View.OnClickListener {
     protected SwipeBackHelper mSwipeBackHelper;
-    protected Toolbar toolbar;
+    protected CustomToolbar toolbar;
     private FrameLayout base_content;
 
 
@@ -25,8 +26,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.base_layout);
         base_content = (FrameLayout) findViewById(R.id.fl_base_content);
-        toolbar = (Toolbar) findViewById(R.id.tl_base_toolbar);
-        setSupportActionBar(toolbar);
+        toolbar = (CustomToolbar) findViewById(R.id.tl_base_toolbar);
+        toolbar.setLeftImgOnClickListener(this);
+        //setSupportActionBar(toolbar);
         if (getLayout() != 0) {
             base_content.addView(getLayoutInflater().inflate(getLayout(), null));
         }
@@ -105,5 +107,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
         mSwipeBackHelper.backward();
     }
 
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.toolbar_ivb_left) {
+            finish();
+        }
+    }
 
 }

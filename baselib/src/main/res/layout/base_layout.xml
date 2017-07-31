@@ -5,14 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <com.chao.baselib.view.CustomToolbar
         android:id="@+id/tl_base_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="2dp"
-        android:minHeight="?attr/actionBarSize"
-        app:navigationIcon="@drawable/common_top_back"></android.support.v7.widget.Toolbar>
+        android:minHeight="?attr/actionBarSize" />
 
     <FrameLayout
         android:id="@+id/fl_base_content"

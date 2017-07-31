@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="#f00">
+
+    <ImageView
+        android:id="@+id/toolbar_ivb_left"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:paddingLeft="12dp"
+        android:paddingRight="15dp"
+        android:scaleType="center"
+        android:src="@drawable/common_top_back" />
+
+    <TextView
+        android:id="@+id/toolbar_tvb_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical|right"
+        android:paddingLeft="15dp"
+        android:paddingRight="12dp"
+        android:textSize="17sp"
+        tools:text="更多" />
+
+    <TextView
+        android:id="@+id/toolbar_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="标题" />
+
+    <ImageView
+        android:id="@+id/toolbar_ivb_right"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:scaleType="fitXY"
+        tools:src="@drawable/common_top_back" />
+</RelativeLayout>
