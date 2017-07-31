@@ -6,6 +6,8 @@
 # Instructions:
 Register in Application: MainInit.getInstance (). Init (this);
 # Function registration:
-  ```BaseConfig.setDeBug (true);
+```
+  BaseConfig.setDeBug (true);
   BaseConfig.setBackFinish (false);
-...```
+...
+```
