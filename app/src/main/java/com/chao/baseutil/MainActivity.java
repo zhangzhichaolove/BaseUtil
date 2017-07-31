@@ -26,7 +26,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
-
         toolbar.setTitle("首页");
         toolbar.setRightImg(R.mipmap.s11);
         LogUtils.showTagE("-----" + GeneralVar.getScreenWidth());
