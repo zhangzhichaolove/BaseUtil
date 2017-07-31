@@ -9,4 +9,5 @@ BaseConfig.setDeBug(true);
 BaseConfig.setBackFinish(false);
 ....
 ```
+![image](https://github.com/zhangzhichaolove/BaseUtil/blob/master/image/home.png) 
 # 更多功能期待大家提出。。。
