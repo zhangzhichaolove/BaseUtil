@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -86,9 +89,18 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
     }
 
     public void resetDensity() {
+        //Point size = new Point();
+        //getWindowManager().getDefaultDisplay().getSize(size);
+        //getResources().getDisplayMetrics().xdpi = size.x / DESIGN_WIDTH * 72f;
         Point size = new Point();
-        getWindowManager().getDefaultDisplay().getSize(size);
-
+        WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+            display.getSize(size);
+        } else {
+            size.x = display.getWidth();
+            size.y = display.getHeight();
+        }
         getResources().getDisplayMetrics().xdpi = size.x / DESIGN_WIDTH * 72f;
     }
 
