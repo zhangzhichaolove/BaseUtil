@@ -1,10 +1,13 @@
 package com.chao.baselib.base;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -17,11 +20,13 @@ import com.chao.baselib.util.WindowUtils;
 import com.chao.baselib.variable.GeneralVar;
 import com.chao.baselib.view.CustomToolbar;
 
+
 /**
  * Created by Chao on 2017/7/30.
  */
 
 public abstract class BaseActivity extends AppCompatActivity implements ActivityInterface, SwipeBackHelper.Delegate, View.OnClickListener {
+    public final static float DESIGN_WIDTH = 750; //绘制页面时参照的设计图宽度
     protected SwipeBackHelper mSwipeBackHelper;
     protected CustomToolbar toolbar;
     protected LinearLayout ll_rootView;
@@ -33,6 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        resetDensity();
         setContentView(R.layout.base_layout);
         mContext = this;
         WindowUtils.setWindow(this);
@@ -54,6 +60,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
         }
 
         //setSupportActionBar(toolbar);
+        //LogUtils.showTagE(Math.sqrt(1334 ^ 2 + 750 ^ 2) / 21.25 + "");
         if (getLayout() != 0) {
             base_content.addView(getLayoutInflater().inflate(getLayout(), null));
         }
@@ -64,6 +71,25 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
         FindView.bind(this);
         initSwipeBackFinish();
         initView();
+    }
+
+    //将pt转换为px值
+    public float pt2px(int value) {
+        //TypedValue.applyDimension时注意传入的DisplayMetrics是改过之后的。或者不用这个方法自己来计算。
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PT, value, getResources().getDisplayMetrics());
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        resetDensity();
+    }
+
+    public void resetDensity() {
+        Point size = new Point();
+        getWindowManager().getDefaultDisplay().getSize(size);
+
+        getResources().getDisplayMetrics().xdpi = size.x / DESIGN_WIDTH * 72f;
     }
 
 
