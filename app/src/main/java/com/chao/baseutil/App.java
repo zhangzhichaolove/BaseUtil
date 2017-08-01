@@ -17,6 +17,5 @@ public class App extends Application {
         MainInit.getInstance().init(this);
         BaseConfig.setDeBug(true);
         BaseConfig.setBackFinish(true);
-
     }
 }
