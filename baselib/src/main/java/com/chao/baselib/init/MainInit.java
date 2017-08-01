@@ -2,8 +2,6 @@ package com.chao.baselib.init;
 
 import android.app.Application;
 
-import com.chao.baselib.backlayout.SwipeBackManager;
-import com.chao.baselib.config.BaseConfig;
 import com.chao.baselib.util.ScreenUtils;
 import com.chao.baselib.variable.GeneralVar;
 

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -25,9 +24,9 @@ import com.chao.baselib.view.CustomToolbar;
 public abstract class BaseActivity extends AppCompatActivity implements ActivityInterface, SwipeBackHelper.Delegate, View.OnClickListener {
     protected SwipeBackHelper mSwipeBackHelper;
     protected CustomToolbar toolbar;
-    private FrameLayout base_content;
+    protected LinearLayout ll_rootView;
+    protected FrameLayout base_content;
     protected View statusBar;
-    private LinearLayout ll_rootView;
     protected Context mContext;
 
 
@@ -39,13 +38,21 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
         WindowUtils.setWindow(this);
         base_content = (FrameLayout) findViewById(R.id.fl_base_content);
         ll_rootView = (LinearLayout) findViewById(R.id.ll_rootView);
-        toolbar = (CustomToolbar) findViewById(R.id.tl_base_toolbar);
-        toolbar.setLeftImgOnClickListener(this);
-        statusBar = new View(mContext);
-        LinearLayout.LayoutParams lp =
-                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, GeneralVar.getStatusHeight());
-        statusBar.setBackgroundColor(Color.RED);
-        ll_rootView.addView(statusBar, 0, lp);
+        if (showStatusBar()) {
+            statusBar = new View(mContext);
+            LinearLayout.LayoutParams statusBarLp =
+                    new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, GeneralVar.getStatusHeight());
+            statusBar.setBackgroundColor(Color.RED);
+            ll_rootView.addView(statusBar, 0, statusBarLp);
+        }
+        if (showTitle()) {
+            toolbar = (CustomToolbar) getLayoutInflater().inflate(R.layout.whole_toolbar, null);
+            LinearLayout.LayoutParams toolbarLp =
+                    new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            toolbar.setLeftImgOnClickListener(this);
+            ll_rootView.addView(toolbar, showStatusBar() ? 1 : 0, toolbarLp);
+        }
+
         //setSupportActionBar(toolbar);
         if (getLayout() != 0) {
             base_content.addView(getLayoutInflater().inflate(getLayout(), null));
@@ -139,5 +146,19 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
     protected void onDestroy() {
         mContext = null;
         super.onDestroy();
+    }
+
+    /**
+     * 是否显示标题栏，子类可以重写
+     */
+    public boolean showTitle() {
+        return true;
+    }
+
+    /**
+     * 是否显示状态栏，子类可以重写
+     */
+    public boolean showStatusBar() {
+        return true;
     }
 }
