@@ -31,6 +31,7 @@ public class MainActivity extends ViewControlActivity {
         LogUtils.showTagE("-----" + GeneralVar.getScreenWidth());
         LogUtils.showTagE("-----" + GeneralVar.getScreenHeight());
         LogUtils.showTagE("-----" + GeneralVar.getStatusHeight());
+        LogUtils.showTagE("-----" + GeneralVar.getNavigationBarHeight());
         tv_startActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

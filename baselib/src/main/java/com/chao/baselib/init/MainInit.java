@@ -28,9 +28,10 @@ public class MainInit {
 
     public void init(Application application) {
         GeneralVar.setApplication(application);
-        GeneralVar.setScreenWidth(ScreenUtils.getScreenWidth(application));
-        GeneralVar.setScreenHeight(ScreenUtils.getScreenHeight(application));
-        GeneralVar.setStatusHeight(ScreenUtils.getStatusHeight(application));
+        GeneralVar.setScreenWidth(ScreenUtils.getScreenWidth());
+        GeneralVar.setScreenHeight(ScreenUtils.getScreenHeight());
+        GeneralVar.setStatusHeight(ScreenUtils.getStatusHeight());
+        GeneralVar.setNavigationBarHeight(ScreenUtils.getNavBarHeight());
     }
 
 }

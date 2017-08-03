@@ -12,6 +12,7 @@ public class GeneralVar {
     private static int screenWidth;
     private static int screenHeight;
     private static int statusHeight;
+    private static int navigationBarHeight;
 
 
     public static int getScreenWidth() {
@@ -44,5 +45,13 @@ public class GeneralVar {
 
     public static void setApplication(Application application) {
         GeneralVar.application = application;
+    }
+
+    public static int getNavigationBarHeight() {
+        return navigationBarHeight;
+    }
+
+    public static void setNavigationBarHeight(int navigationBarHeight) {
+        GeneralVar.navigationBarHeight = navigationBarHeight;
     }
 }

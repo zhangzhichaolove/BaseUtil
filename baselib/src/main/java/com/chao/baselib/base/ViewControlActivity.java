@@ -23,6 +23,7 @@ import com.chao.baselib.view.CustomToolbar;
 
 
 /**
+ * 视图控制Activity基类
  * Created by Chao on 2017/7/30.
  */
 

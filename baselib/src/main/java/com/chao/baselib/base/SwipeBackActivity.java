@@ -8,6 +8,7 @@ import com.chao.baselib.backlayout.SwipeBackHelper;
 import com.chao.baselib.config.BaseConfig;
 
 /**
+ * 侧滑返回Activity基类
  * Created by Chao on 2017/8/3.
  */
 

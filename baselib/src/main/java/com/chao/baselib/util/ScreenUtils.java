@@ -10,8 +10,13 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.WindowManager;
+
+import com.chao.baselib.variable.GeneralVar;
 
 import java.lang.reflect.Method;
 
@@ -28,12 +33,9 @@ public class ScreenUtils {
 
     /**
      * 获得屏幕高度
-     *
-     * @param context
-     * @return
      */
-    public static int getScreenWidth(Context context) {
-        WindowManager wm = (WindowManager) context
+    public static int getScreenWidth() {
+        WindowManager wm = (WindowManager) GeneralVar.getApplication()
                 .getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics outMetrics = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(outMetrics);
@@ -42,12 +44,9 @@ public class ScreenUtils {
 
     /**
      * 获得屏幕宽度
-     *
-     * @param context
-     * @return
      */
-    public static int getScreenHeight(Context context) {
-        WindowManager wm = (WindowManager) context
+    public static int getScreenHeight() {
+        WindowManager wm = (WindowManager) GeneralVar.getApplication()
                 .getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics outMetrics = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(outMetrics);
@@ -56,11 +55,8 @@ public class ScreenUtils {
 
     /**
      * 获得状态栏的高度
-     *
-     * @param context
-     * @return
      */
-    public static int getStatusHeight(Context context) {
+    public static int getStatusHeight() {
 
         int statusHeight = -1;
         try {
@@ -68,7 +64,7 @@ public class ScreenUtils {
             Object object = clazz.newInstance();
             int height = Integer.parseInt(clazz.getField("status_bar_height")
                     .get(object).toString());
-            statusHeight = context.getResources().getDimensionPixelSize(height);
+            statusHeight = GeneralVar.getApplication().getResources().getDimensionPixelSize(height);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,76 +72,21 @@ public class ScreenUtils {
     }
 
     /**
-     * 获取底部导航栏高度
+     * 获取导航栏高度
+     * <p>0代表不存在</p>
      *
-     * @param activity
-     * @return
+     * @return 导航栏高度
      */
-    public static int getNavigationBarHeight(Activity activity) {
-        int navigationBarHeight = 0;
-        Resources resources = activity.getResources();
-        int resourceId = resources.getIdentifier(resources.getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? "navigation_bar_height" : "navigation_bar_height_landscape", "dimen", "android");
-        if (resourceId > 0 && checkDeviceHasNavigationBar(activity)) {
-            navigationBarHeight = resources.getDimensionPixelSize(resourceId);
-        }
-        return navigationBarHeight;
-    }
-
-    /**
-     * 检测是否具有底部导航栏
-     *
-     * @param activity
-     * @return
-     */
-    public static boolean checkDeviceHasNavigationBar(Activity activity) {
-        boolean hasNavigationBar = false;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            if (TextUtils.equals("Nexus 4".toLowerCase().trim(), Build.MODEL.toLowerCase().trim())) {
-                hasNavigationBar = false;
-            } else {
-                hasNavigationBar = newCheckDeviceHasNavigationBar(activity);
-            }
+    public static int getNavBarHeight() {
+        boolean hasMenuKey = ViewConfiguration.get(GeneralVar.getApplication()).hasPermanentMenuKey();
+        boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
+        if (!hasMenuKey && !hasBackKey) {
+            Resources res = GeneralVar.getApplication().getResources();
+            int resourceId = res.getIdentifier("navigation_bar_height", "dimen", "android");
+            return res.getDimensionPixelSize(resourceId);
         } else {
-            hasNavigationBar = oldCheckDeviceHasNavigationBar(activity);
+            return 0;
         }
-        return hasNavigationBar;
-    }
-
-    private static boolean oldCheckDeviceHasNavigationBar(Activity activity) {
-        boolean hasNavigationBar = false;
-        Resources resources = activity.getResources();
-        int id = resources.getIdentifier("config_showNavigationBar", "bool", "android");
-        if (id > 0) {
-            hasNavigationBar = resources.getBoolean(id);
-        }
-        try {
-            Class systemPropertiesClass = Class.forName("android.os.SystemProperties");
-            Method m = systemPropertiesClass.getMethod("get", String.class);
-            String navBarOverride = (String) m.invoke(systemPropertiesClass, "qemu.hw.mainkeys");
-            if ("1".equals(navBarOverride)) {
-                hasNavigationBar = false;
-            } else if ("0".equals(navBarOverride)) {
-                hasNavigationBar = true;
-            }
-        } catch (Exception e) {
-        }
-        return hasNavigationBar;
-    }
-
-    private static boolean newCheckDeviceHasNavigationBar(Activity activity) {
-        WindowManager windowManager = activity.getWindowManager();
-        Display display = windowManager.getDefaultDisplay();
-        DisplayMetrics realDisplayMetrics = new DisplayMetrics();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            display.getRealMetrics(realDisplayMetrics);
-        }
-        int realHeight = realDisplayMetrics.heightPixels;
-        int realWidth = realDisplayMetrics.widthPixels;
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        display.getMetrics(displayMetrics);
-        int displayHeight = displayMetrics.heightPixels;
-        int displayWidth = displayMetrics.widthPixels;
-        return (realWidth - displayWidth) > 0 || (realHeight - displayHeight) > 0;
     }
 
     /**
@@ -159,8 +100,8 @@ public class ScreenUtils {
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache();
         Bitmap bmp = view.getDrawingCache();
-        int width = getScreenWidth(activity);
-        int height = getScreenHeight(activity);
+        int width = getScreenWidth();
+        int height = getScreenHeight();
         Bitmap bp = null;
         bp = Bitmap.createBitmap(bmp, 0, 0, width, height);
         view.destroyDrawingCache();
@@ -183,8 +124,8 @@ public class ScreenUtils {
         activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
         int statusBarHeight = frame.top;
 
-        int width = getScreenWidth(activity);
-        int height = getScreenHeight(activity);
+        int width = getScreenWidth();
+        int height = getScreenHeight();
         Bitmap bp = null;
         bp = Bitmap.createBitmap(bmp, 0, statusBarHeight, width, height
                 - statusBarHeight);
