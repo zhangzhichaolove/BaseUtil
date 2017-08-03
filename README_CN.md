@@ -28,4 +28,66 @@ setEmptyRes(R.layout.base_empty);
 showLoading();
 showEmpty();
 ```
+# 适配器的使用：
+## 无论你是ListView GridView RecyclerView 你都只需要集成CustomAdapter即可使用。
+```
+        CustomAdapter adapter=new CustomAdapter<String>(mContext,list,R.layout.base_empty) {
+            @Override
+            public void onBind(ViewHolder holder, int viewType, int position, String item) {
+
+            }
+
+            @Override
+            public void onClick(View view) {
+                
+            }
+        };
+        listView.setadapter(adapter);
+        gridView.setadapter(adapter);
+        recyclerView.setadapter(adapter);
+```
+## 多布局：
+```
+        //多布局需要构造第三个参数直接new RLItemViewType，或者在内部重写offerRLItemViewType对不同TPYE进行处理。
+        CustomAdapter adapter = new CustomAdapter<String>(mContext, list, null) {
+            @Override
+            public void onBind(ViewHolder holder, int viewType, int position, String item) {
+                if (viewType == 0) {
+                    holder.view(R.id.tv_content).setText(item).setTextSize(15).setTextColor(Color.RED).setOnClickListener(this);
+                } else if (viewType == 1) {
+                    holder.view(R.id.tv_content).setBackgroundResource(R.drawable.common_top_back).setScaleType(ImageView.ScaleType.CENTER_CROP).setOnClickListener(this);
+                }
+            }
+
+            @Override
+            public void onClick(View view) {
+
+            }
+
+            @Override
+            protected RLItemViewType<String> offerRLItemViewType() {
+                return new SimpleItemType<String>() {
+                    @Override
+                    public int getItemViewType(int position, String s) {
+                        if (position == 0) {
+                            return 0;
+                        } else if (position == 1) {
+                            return 1;
+                        }
+                        return 0;
+                    }
+
+                    @Override
+                    public int getLayoutId(int viewType) {
+                        if (viewType == 0) {
+                            return R.layout.base_empty;
+                        } else if (viewType == 1) {
+                            return R.layout.base_empty2;
+                        }
+                        return base_empty;
+                    }
+                };
+            }
+        };
+```
 # 更多功能期待大家提出。。。
