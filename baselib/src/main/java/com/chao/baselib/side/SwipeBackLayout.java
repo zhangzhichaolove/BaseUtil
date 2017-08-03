@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.chao.baselib.backlayout;
+package com.chao.baselib.side;
 
 import android.app.Activity;
 import android.content.Context;

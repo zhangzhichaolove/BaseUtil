@@ -1,6 +1,6 @@
 package com.chao.baselib.config;
 
-import com.chao.baselib.backlayout.SwipeBackManager;
+import com.chao.baselib.side.SwipeBackManager;
 import com.chao.baselib.variable.GeneralVar;
 
 /**

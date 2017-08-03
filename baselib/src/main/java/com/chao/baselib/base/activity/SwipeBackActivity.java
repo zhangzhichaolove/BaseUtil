@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.chao.baselib.R;
-import com.chao.baselib.backlayout.SwipeBackHelper;
+import com.chao.baselib.side.SwipeBackHelper;
 import com.chao.baselib.config.BaseConfig;
 
 /**
