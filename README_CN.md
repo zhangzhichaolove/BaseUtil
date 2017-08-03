@@ -35,7 +35,8 @@ showEmpty();
             @Override
             public void onBind(ViewHolder holder, int viewType, int position, String item) {
                 holder.view(R.id.tv_content).setText(item).setTextSize(15).setTextColor(Color.RED).setOnClickListener(this);
-            }
+                holder.setText(R.id.tv_name,item);
+            }
 
             @Override
             public void onClick(View view) {
@@ -108,7 +109,7 @@ adapter.clear();
 ```
 # 添加模拟数据，当我们界面编写完成，需要预览界面而又没有数据，也不想new List()模拟数据时，我们只需重写如下方法即可解决：
 ```
-        @Override
+            @Override
             public int getBaseCount() {
                 return 10;//你需要模拟的数据条数
             }
@@ -119,5 +120,13 @@ setOnlyOnce(true);//设置动画执行单次。
 enableLoadAnimation();//启用默认透明度变化。
 enableLoadAnimation(500,animation);//定义时常和动画。
 enableLoadAnimation(500, AnimationEnum.SCALE);//使用默认提供的5种动画。
+```
+# EventVus 默认自定义了一个EventBus，使用方式与之前完全一样，但是更加轻量，无需再多集成一个lib。
+# 注解findViewById：
+```
+    @Id(R.id.tv_content)
+    TextView tv_content;
+    @Id(R.id.iv_showLoad)
+    ImageView iv_showLoad;
 ```
 # 更多功能期待大家提出。。。
