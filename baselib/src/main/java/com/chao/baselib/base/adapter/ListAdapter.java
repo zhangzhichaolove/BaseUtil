@@ -17,9 +17,6 @@ public abstract class ListAdapter<T> extends BaseAdapter implements
 
     public List<T> data;
 
-    private View backgroundview;
-
-    private AdapterUpdate adapterUpdate;
 
     public boolean isDeBug = false;
 
@@ -38,14 +35,6 @@ public abstract class ListAdapter<T> extends BaseAdapter implements
             return data.size();
         }
         return 0;
-    }
-
-    public interface AdapterUpdate {
-        void adapterUpdate();
-    }
-
-    public void setAdapterUpdate(AdapterUpdate adapterUpdate) {
-        this.adapterUpdate = adapterUpdate;
     }
 
     @Override
@@ -96,7 +85,7 @@ public abstract class ListAdapter<T> extends BaseAdapter implements
 
         ViewHolder holder = null;
 
-        if (convertView == null || backgroundview == convertView) {
+        if (convertView == null) {
             if (getItemResource() == 0) {// 如果没有加载布局，new布局将直接调用getView方法
                 return getItemView(position, data.get(position), convertView,
                         holder);
