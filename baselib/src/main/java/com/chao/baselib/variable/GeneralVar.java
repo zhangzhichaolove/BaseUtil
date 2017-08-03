@@ -12,7 +12,6 @@ public class GeneralVar {
     private static int screenWidth;
     private static int screenHeight;
     private static int statusHeight;
-    private static int actionBarHeight;
     private static int navigationBarHeight;
 
 
@@ -54,15 +53,6 @@ public class GeneralVar {
 
     public static void setNavigationBarHeight(int navigationBarHeight) {
         GeneralVar.navigationBarHeight = navigationBarHeight;
-    }
-
-
-    public static int getActionBarHeight() {
-        return actionBarHeight;
-    }
-
-    public static void setActionBarHeight(int actionBarHeight) {
-        GeneralVar.actionBarHeight = actionBarHeight;
     }
 
 }

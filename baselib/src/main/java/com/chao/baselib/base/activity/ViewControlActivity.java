@@ -58,7 +58,10 @@ public abstract class ViewControlActivity extends AppCompatActivity implements A
         if (showTitle()) {
             toolbar = (CustomToolbar) getLayoutInflater().inflate(R.layout.whole_toolbar, null);
             TypedValue tv = new TypedValue();
-            int actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
+            int actionBarHeight = 0;
+            if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+                actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
+            }
             LinearLayout.LayoutParams toolbarLp =
                     new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, actionBarHeight);
             toolbar.setLeftImgOnClickListener(this);

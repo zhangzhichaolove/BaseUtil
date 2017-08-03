@@ -67,18 +67,6 @@ public class ScreenUtils {
     }
 
     /**
-     * 获得ActionBar的高度
-     */
-    public static int getActionBarHeight() {
-        int actionBarHeight = 0;
-        TypedValue tv = new TypedValue();
-        if (GeneralVar.getApplication().getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, GeneralVar.getApplication().getResources().getDisplayMetrics());
-        }
-        return actionBarHeight;
-    }
-
-    /**
      * 获取导航栏高度
      * <p>0代表不存在</p>
      *
