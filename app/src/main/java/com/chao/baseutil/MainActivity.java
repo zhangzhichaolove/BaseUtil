@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.chao.baselib.base.BaseActivity;
+import com.chao.baselib.base.ViewControlActivity;
 import com.chao.baselib.injection.Id;
 import com.chao.baselib.log.LogUtils;
 import com.chao.baselib.variable.GeneralVar;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends ViewControlActivity {
     @Id(R.id.tv_startActivity)
     TextView tv_startActivity;
 

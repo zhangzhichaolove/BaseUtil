@@ -16,7 +16,7 @@ import android.widget.FrameLayout;
 
 import com.chao.baselib.variable.GeneralVar;
 
-public class WindowUtils {
+public class BarUtils {
 
     public static void setTitleColor(Activity activity, int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {// 4.4以上且开启透明
