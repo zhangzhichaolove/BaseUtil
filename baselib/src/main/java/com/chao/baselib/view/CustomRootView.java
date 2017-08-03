@@ -9,14 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.chao.baselib.config.CustomConfig;
+
 /**
  * 多布局根View
  * Created by Chao on 2017/8/3.
  */
 
 public class CustomRootView extends FrameLayout {
-    private int emptyRes = -1;
-    private int loadingRes = -1;
+    private int emptyRes;
+    private int loadingRes;
     private View contentView;
     private View emptyView;
     private View loadingView;
@@ -32,6 +34,8 @@ public class CustomRootView extends FrameLayout {
 
     public CustomRootView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        emptyRes = CustomConfig.emptyView;
+        loadingRes = CustomConfig.loadingView;
     }
 
     public void setEmptyRes(int res) {

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.chao.baselib.R;
-import com.chao.baselib.config.BaseConfig;
+import com.chao.baselib.config.CustomConfig;
 import com.chao.baselib.side.SwipeBackHelper;
 
 /**
@@ -22,7 +22,7 @@ public abstract class SwipeBackActivity extends ViewControlActivity implements S
     }
 
     protected void initSwipeBackFinish() {
-        if (BaseConfig.backFinish) {
+        if (CustomConfig.backFinish) {
             mSwipeBackHelper = new SwipeBackHelper(this, this);
             // 设置滑动返回是否可用。默认值为 true
             mSwipeBackHelper.setSwipeBackEnable(true);
@@ -77,7 +77,7 @@ public abstract class SwipeBackActivity extends ViewControlActivity implements S
 
     @Override
     public void onBackPressed() {
-        if (BaseConfig.backFinish) {
+        if (CustomConfig.backFinish) {
             // 正在滑动返回的时候取消返回按钮事件
             if (mSwipeBackHelper.isSliding()) {
                 return;

@@ -2,7 +2,7 @@ package com.chao.baseutil;
 
 import android.app.Application;
 
-import com.chao.baselib.config.BaseConfig;
+import com.chao.baselib.config.CustomConfig;
 import com.chao.baselib.init.MainInit;
 
 /**
@@ -15,8 +15,10 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         MainInit.getInstance().init(this);
-        BaseConfig.setDeBug(true);
-        BaseConfig.setBackFinish(true);
+        CustomConfig.setDeBug(true);
+        CustomConfig.setBackFinish(true);
+        CustomConfig.setLoadingView(R.layout.base_loading);
+        CustomConfig.setEmptyView(R.layout.base_empty);
 
     }
 }

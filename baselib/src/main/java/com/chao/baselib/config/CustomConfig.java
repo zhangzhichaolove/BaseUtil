@@ -8,19 +8,30 @@ import com.chao.baselib.variable.GeneralVar;
  * Created by Chao on 2017/7/30.
  */
 
-public class BaseConfig {
+public class CustomConfig {
     public static boolean deBug;
     public static boolean backFinish;
+    public static int emptyView = -1;
+    public static int loadingView = -1;
 
 
     public static void setDeBug(boolean deBug) {
-        BaseConfig.deBug = deBug;
+        CustomConfig.deBug = deBug;
     }
 
     public static void setBackFinish(boolean backFinish) {
-        BaseConfig.backFinish = backFinish;
+        CustomConfig.backFinish = backFinish;
         if (backFinish) {
             SwipeBackManager.getInstance().init(GeneralVar.getApplication());
         }
     }
+
+    public static void setLoadingView(int loadingView) {
+        CustomConfig.loadingView = loadingView;
+    }
+
+    public static void setEmptyView(int emptyView) {
+        CustomConfig.emptyView = emptyView;
+    }
+
 }

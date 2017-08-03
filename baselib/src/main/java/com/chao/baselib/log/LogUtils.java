@@ -2,7 +2,7 @@ package com.chao.baselib.log;
 
 import android.util.Log;
 
-import com.chao.baselib.config.BaseConfig;
+import com.chao.baselib.config.CustomConfig;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,32 +31,32 @@ public class LogUtils {
     private static final String BOTTOM_BORDER = "╚═══════════════════════════════════════════════════════════════════════════════════════════════════";
 
     public static void println(Object object) {
-        if (BaseConfig.deBug) {
+        if (CustomConfig.deBug) {
             System.out.println(callMethodAndLine(P, TAG, object));
         }
     }
 
     public static void showTagD(String tag, Object object) {
-        if (BaseConfig.deBug) {
+        if (CustomConfig.deBug) {
             callMethodAndLine(D, tag, object);// 蓝
         }
     }
 
     public static void showTagD(Object object) {
-        if (BaseConfig.deBug) {
+        if (CustomConfig.deBug) {
             callMethodAndLine(D, TAG, object);// 蓝
         }
     }
 
 
     public static void showTagI(String tag, Object object) {
-        if (BaseConfig.deBug) {
+        if (CustomConfig.deBug) {
             callMethodAndLine(I, tag, object);// 绿
         }
     }
 
     public static void showTagI(Object object) {
-        if (BaseConfig.deBug) {
+        if (CustomConfig.deBug) {
             // 1、Log.v
             // 的调试颜色为黑色的，任何消息都会输出，这里的v代表verbose啰嗦的意思，平时使用就是Log.v("","");
             // Log.v(TAG, object.toString());// 黑
@@ -78,25 +78,25 @@ public class LogUtils {
     }
 
     public static void showTagW(String tag, Object object) {
-        if (BaseConfig.deBug) {
+        if (CustomConfig.deBug) {
             callMethodAndLine(W, tag, object);// 黄
         }
     }
 
     public static void showTagW(Object object) {
-        if (BaseConfig.deBug) {
+        if (CustomConfig.deBug) {
             callMethodAndLine(W, TAG, object);// 黄
         }
     }
 
     public static void showTagE(String tag, Object object) {
-        if (BaseConfig.deBug) {
+        if (CustomConfig.deBug) {
             callMethodAndLine(E, tag, object);
         }
     }
 
     public static void showTagE(Object object) {
-        if (BaseConfig.deBug) {
+        if (CustomConfig.deBug) {
             callMethodAndLine(E, TAG, object);
         }
     }
