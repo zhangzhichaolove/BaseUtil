@@ -31,6 +31,7 @@ public class MainInit {
         GeneralVar.setScreenWidth(ScreenUtils.getScreenWidth());
         GeneralVar.setScreenHeight(ScreenUtils.getScreenHeight());
         GeneralVar.setStatusHeight(ScreenUtils.getStatusHeight());
+        GeneralVar.setActionBarHeight(ScreenUtils.getActionBarHeight());
         GeneralVar.setNavigationBarHeight(ScreenUtils.getNavBarHeight());
     }
 

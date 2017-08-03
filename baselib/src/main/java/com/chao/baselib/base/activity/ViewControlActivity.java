@@ -12,7 +12,6 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.chao.baselib.R;
@@ -58,8 +57,10 @@ public abstract class ViewControlActivity extends AppCompatActivity implements A
         }
         if (showTitle()) {
             toolbar = (CustomToolbar) getLayoutInflater().inflate(R.layout.whole_toolbar, null);
+            TypedValue tv = new TypedValue();
+            int actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
             LinearLayout.LayoutParams toolbarLp =
-                    new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, actionBarHeight);
             toolbar.setLeftImgOnClickListener(this);
             ll_rootView.addView(toolbar, showStatusBar() ? 1 : 0, toolbarLp);
         }

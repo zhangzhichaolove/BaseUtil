@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.chao.baselib.R;
-import com.chao.baselib.side.SwipeBackHelper;
 import com.chao.baselib.config.BaseConfig;
+import com.chao.baselib.side.SwipeBackHelper;
 
 /**
  * 侧滑返回Activity基类
