@@ -50,7 +50,7 @@ showEmpty();
 ```
 ## Multi-layout:
 ```
-        //多布局需要构造第三个参数直接new RLItemViewType，或者在内部重写offerRLItemViewType对不同TPYE进行处理。
+        //Multiple layouts need to construct the third argument directly to the new RLItemViewType, or internally rewrite the offerRLItemViewType to handle the different TPYEs.
         CustomAdapter adapter = new CustomAdapter<String>(mContext, list, null) {
             @Override
             public void onBind(ViewHolder holder, int viewType, int position, String item) {
@@ -112,7 +112,7 @@ adapter.clear();
 ```
             @Override
             public int getBaseCount() {
-                return 10;//你需要模拟的数据条数
+                return 10;//You need to simulate the number of data bars
             }
 ```
 # Item animation:
