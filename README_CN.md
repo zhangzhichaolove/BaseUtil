@@ -34,7 +34,7 @@ showEmpty();
         CustomAdapter adapter=new CustomAdapter<String>(mContext,list,R.layout.base_empty) {
             @Override
             public void onBind(ViewHolder holder, int viewType, int position, String item) {
-
+                holder.view(R.id.tv_content).setText(item).setTextSize(15).setTextColor(Color.RED).setOnClickListener(this);
             }
 
             @Override
