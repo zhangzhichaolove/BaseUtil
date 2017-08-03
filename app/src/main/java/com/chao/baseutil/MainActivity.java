@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.chao.baselib.base.ViewControlActivity;
+import com.chao.baselib.base.activity.ViewControlActivity;
 import com.chao.baselib.injection.Id;
 import com.chao.baselib.log.LogUtils;
 import com.chao.baselib.variable.GeneralVar;

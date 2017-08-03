@@ -7,7 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
-import com.chao.baselib.base.SwipeBackActivity;
+import com.chao.baselib.base.activity.SwipeBackActivity;
 import com.chao.baselib.injection.Id;
 import com.chao.baselib.log.LogUtils;
 import com.chao.baselib.variable.GeneralVar;

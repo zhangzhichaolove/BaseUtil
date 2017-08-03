@@ -1,4 +1,4 @@
-package com.chao.baselib.base;
+package com.chao.baselib.base.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

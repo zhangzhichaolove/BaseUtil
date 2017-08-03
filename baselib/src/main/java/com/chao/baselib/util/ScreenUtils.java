@@ -2,14 +2,10 @@ package com.chao.baselib.util;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
-import android.os.Build;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,8 +13,6 @@ import android.view.ViewConfiguration;
 import android.view.WindowManager;
 
 import com.chao.baselib.variable.GeneralVar;
-
-import java.lang.reflect.Method;
 
 /**
  * 获得屏幕相关的辅助类

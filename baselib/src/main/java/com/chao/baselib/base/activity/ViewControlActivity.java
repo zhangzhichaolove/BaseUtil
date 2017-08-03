@@ -1,4 +1,4 @@
-package com.chao.baselib.base;
+package com.chao.baselib.base.activity;
 
 import android.content.Context;
 import android.content.res.Configuration;
