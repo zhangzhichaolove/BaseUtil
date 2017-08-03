@@ -28,7 +28,7 @@ import com.chao.baselib.view.CustomToolbar;
  */
 
 public abstract class ViewControlActivity extends AppCompatActivity implements ActivityInterface, View.OnClickListener {
-    public final static float DESIGN_WIDTH = 750; //绘制页面时参照的设计图宽度
+    public final static float DESIGN_WIDTH = 720; //绘制页面时参照的设计图宽度
     protected CustomToolbar toolbar;
     protected LinearLayout ll_rootView;
     protected FrameLayout base_content;
@@ -64,7 +64,7 @@ public abstract class ViewControlActivity extends AppCompatActivity implements A
         }
 
         //setSupportActionBar(toolbar);
-        //LogUtils.showTagE(Math.sqrt(1920 ^ 2 + 1080 ^ 2) / 72 + "");
+        //LogUtils.showTagE(Math.sqrt(Math.pow(1280, 2) + Math.pow(720, 2)) / 72 + "");
         if (getLayout() != 0) {
             base_content.addView(getLayoutInflater().inflate(getLayout(), null));
         }
