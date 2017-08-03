@@ -90,4 +90,34 @@ showEmpty();
             }
         };
 ```
+# 添加头和尾：
+```
+adapter.addHeader(view);
+adapter.addFooter(view);
+```
+# 数据操作(调用这些方法后，无需再次调用notifyDataSetChanged())：
+```
+adapter.setData(list);
+adapter.addFirst("add");
+adapter.addIndex("add",2);
+adapter.addLast("add");
+adapter.addAll(list);
+adapter.set("update",2);
+adapter.remove(2);
+adapter.clear();
+```
+# 添加模拟数据，当我们界面编写完成，需要预览界面而又没有数据，也不想new List()模拟数据时，我们只需重写如下方法即可解决：
+```
+        @Override
+            public int getBaseCount() {
+                return 10;//你需要模拟的数据条数
+            }
+```
+# Item动画：
+```
+setOnlyOnce(true);//设置动画执行单次。
+enableLoadAnimation();//启用默认透明度变化。
+enableLoadAnimation(500,animation);//定义时常和动画。
+enableLoadAnimation(500, AnimationEnum.SCALE);//使用默认提供的5种动画。
+```
 # 更多功能期待大家提出。。。
