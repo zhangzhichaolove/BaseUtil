@@ -11,7 +11,7 @@ BaseConfig.setBackFinish(false);
 ```
 # 以下是API19以上支持的沉侵方案，API大于19默认开启（低于19默认不显示），状态条使用View，更加灵活，你可以给它设置GONE属性，让布局内容延伸到状态栏，或者设置你想要的颜色，例如透明色，达到可以自由控制状态栏颜色，并让内容布局预留状态栏空间，避免再次设置android:fitsSystemWindows="true"
 ![image](https://github.com/zhangzhichaolove/BaseUtil/blob/master/image/home.png) 
-# 加载多布局：
+# 加载多布局：
 ## 你可以在应用初始化时配置这些布局，也可以在BaseActivity单独设置这些属性：
 ### 全局配置如下：
 ```
