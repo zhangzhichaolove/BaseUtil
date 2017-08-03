@@ -19,6 +19,7 @@ import com.chao.baselib.R;
 import com.chao.baselib.injection.FindView;
 import com.chao.baselib.util.BarUtils;
 import com.chao.baselib.variable.GeneralVar;
+import com.chao.baselib.view.CustomRootView;
 import com.chao.baselib.view.CustomToolbar;
 
 
@@ -31,7 +32,7 @@ public abstract class ViewControlActivity extends AppCompatActivity implements A
     public final static float DESIGN_WIDTH = 720; //绘制页面时参照的设计图宽度
     protected CustomToolbar toolbar;
     protected LinearLayout ll_rootView;
-    protected FrameLayout base_content;
+    protected CustomRootView base_content;
     protected View statusBar;
     protected Context mContext;
 
@@ -43,7 +44,7 @@ public abstract class ViewControlActivity extends AppCompatActivity implements A
         setContentView(R.layout.base_layout);
         mContext = this;
         BarUtils.setWindow(this);
-        base_content = (FrameLayout) findViewById(R.id.fl_base_content);
+        base_content = (CustomRootView) findViewById(R.id.fl_base_content);
         ll_rootView = (LinearLayout) findViewById(R.id.ll_rootView);
         if (showStatusBar()) {
             statusBar = new View(mContext);

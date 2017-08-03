@@ -3,16 +3,22 @@ package com.chao.baseutil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chao.baselib.base.activity.ViewControlActivity;
 import com.chao.baselib.injection.Id;
 import com.chao.baselib.log.LogUtils;
 import com.chao.baselib.variable.GeneralVar;
+import com.chao.baselib.view.CustomRootView;
 
 public class MainActivity extends ViewControlActivity {
     @Id(R.id.tv_startActivity)
     TextView tv_startActivity;
+    @Id(R.id.tv_content)
+    TextView tv_content;
+    @Id(R.id.iv_showLoad)
+    ImageView iv_showLoad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,32 @@ public class MainActivity extends ViewControlActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, MainActivityTwo.class));
+            }
+        });
+        iv_showLoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                base_content.setLoadingRes(R.layout.base_loading);
+                base_content.showLoading();
+                base_content.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        base_content.showContent();
+                    }
+                }, 2000);
+            }
+        });
+        tv_content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                base_content.setEmptyRes(R.layout.base_empty);
+                base_content.showEmpty();
+                base_content.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        base_content.showContent();
+                    }
+                }, 2000);
             }
         });
     }

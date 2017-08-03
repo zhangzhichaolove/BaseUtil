@@ -6,10 +6,10 @@
     android:orientation="vertical">
 
 
-    <FrameLayout
+    <com.chao.baselib.view.CustomRootView
         android:id="@+id/fl_base_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fff"></FrameLayout>
+        android:background="#fff"></com.chao.baselib.view.CustomRootView>
 
 </LinearLayout>
