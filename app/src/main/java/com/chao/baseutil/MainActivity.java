@@ -10,7 +10,6 @@ import com.chao.baselib.base.activity.ViewControlActivity;
 import com.chao.baselib.injection.Id;
 import com.chao.baselib.log.LogUtils;
 import com.chao.baselib.variable.GeneralVar;
-import com.chao.baselib.view.CustomRootView;
 
 public class MainActivity extends ViewControlActivity {
     @Id(R.id.tv_startActivity)
