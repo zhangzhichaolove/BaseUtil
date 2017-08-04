@@ -19,6 +19,15 @@
         android:src="@drawable/common_top_back" />
 
     <TextView
+        android:id="@+id/toolbar_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="标题" />
+
+    <TextView
         android:id="@+id/toolbar_tvb_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,15 +39,6 @@
         android:textSize="17sp"
         tools:text="更多" />
 
-    <TextView
-        android:id="@+id/toolbar_tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:text="标题" />
-
     <ImageView
         android:id="@+id/toolbar_ivb_right"
         android:layout_width="35dp"
@@ -47,6 +47,6 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
-        android:scaleType="fitXY"
+        android:scaleType="center"
         tools:src="@drawable/common_top_back" />
 </RelativeLayout>
