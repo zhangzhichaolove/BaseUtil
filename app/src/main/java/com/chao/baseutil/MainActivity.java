@@ -46,7 +46,6 @@ public class MainActivity extends ViewControlActivity {
         iv_showLoad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //base_content.setLoadingRes(R.layout.base_loading);
                 showLoading();
                 iv_showLoad.postDelayed(new Runnable() {
                     @Override
@@ -59,7 +58,6 @@ public class MainActivity extends ViewControlActivity {
         tv_content.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //base_content.setEmptyRes(R.layout.base_empty);
                 showEmpty();
                 tv_content.postDelayed(new Runnable() {
                     @Override

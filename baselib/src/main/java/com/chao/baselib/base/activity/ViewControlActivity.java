@@ -141,7 +141,17 @@ public abstract class ViewControlActivity extends AppCompatActivity implements A
         base_content.showEmpty();
     }
 
+    public void showEmpty(int res) {
+        base_content.setEmptyRes(res);
+        base_content.showEmpty();
+    }
+
     public void showLoading() {
+        base_content.showLoading();
+    }
+
+    public void showLoading(int res) {
+        base_content.setLoadingRes(res);
         base_content.showLoading();
     }
 
