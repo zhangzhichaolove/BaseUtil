@@ -37,7 +37,7 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
         super(context, attrs, defStyleAttr);
         ViewConfiguration configuration = ViewConfiguration.get(context);
         mTouchSlop = configuration.getScaledPagingTouchSlop();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 20; i++) {
             ImageView iv = new ImageView(context);
             iv.setImageResource(R.mipmap.s11);
             iv.setOnClickListener(this);
@@ -148,13 +148,15 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
             case MotionEvent.ACTION_MOVE:
                 if (isOpen) {
                     float moveX = x - event.getX();
-                    scrollBy((int) moveX, 0);
-                    if (getScrollX() < 0) {
+                    if (getScrollX() + moveX < 0) {
                         scrollTo(0, 0);
+                        return true;
                     }
-                    if (getScrollX() > width - getWidth()) {
-                        scrollTo(width - getWidth(), 0);
+                    if (getScrollX() + moveX > width - getWidth()) {
+                        scrollTo(width - getWidth() + SIZE / 2, 0);
+                        return true;
                     }
+                    scrollBy((int) moveX, 0);
                     LogUtils.showTagE("getScrollX=" + getScrollX() + "  getWidth=" + getWidth() + "   width=" + width);
                     x = event.getX();
                 } else {

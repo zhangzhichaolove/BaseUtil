@@ -8,6 +8,7 @@
     <com.chao.baseutil.BaseViewGroup
         android:layout_width="368dp"
         android:layout_height="wrap_content"
+        android:background="#000"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="0dp" />
 
