@@ -136,4 +136,16 @@ public abstract class ViewControlActivity extends AppCompatActivity implements A
     public boolean showStatusBar() {
         return true;
     }
+
+    public void showEmpty() {
+        base_content.showEmpty();
+    }
+
+    public void showLoading() {
+        base_content.showLoading();
+    }
+
+    public void showContent() {
+        base_content.showContent();
+    }
 }

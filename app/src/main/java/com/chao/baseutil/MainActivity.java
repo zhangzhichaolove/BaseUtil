@@ -48,11 +48,11 @@ public class MainActivity extends ViewControlActivity {
             @Override
             public void onClick(View view) {
                 //base_content.setLoadingRes(R.layout.base_loading);
-                base_content.showLoading();
-                base_content.postDelayed(new Runnable() {
+                showLoading();
+                iv_showLoad.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        base_content.showContent();
+                        showContent();
                     }
                 }, 2000);
             }
@@ -61,11 +61,11 @@ public class MainActivity extends ViewControlActivity {
             @Override
             public void onClick(View view) {
                 //base_content.setEmptyRes(R.layout.base_empty);
-                base_content.showEmpty();
-                base_content.postDelayed(new Runnable() {
+                showEmpty();
+                tv_content.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        base_content.showContent();
+                        showContent();
                     }
                 }, 2000);
             }
