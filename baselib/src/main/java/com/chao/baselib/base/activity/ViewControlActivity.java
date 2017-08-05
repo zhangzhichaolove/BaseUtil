@@ -27,7 +27,7 @@ import com.chao.baselib.view.CustomToolbar;
  * Created by Chao on 2017/7/30.
  */
 
-public abstract class ViewControlActivity extends AppCompatActivity implements ActivityInterface, View.OnClickListener {
+public abstract class ViewControlActivity extends AppCompatActivity implements CustomBaseInterface, View.OnClickListener {
     public final static float DESIGN_WIDTH = 720; //绘制页面时参照的设计图宽度
     protected CustomToolbar toolbar;
     protected LinearLayout ll_rootView;

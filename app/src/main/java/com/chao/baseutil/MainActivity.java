@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.chao.baselib.base.activity.SkinActivity;
+import com.chao.baselib.base.activity.CustomActivity;
 import com.chao.baselib.injection.Id;
 import com.chao.baselib.log.LogUtils;
 import com.chao.baselib.variable.GeneralVar;
 
-public class MainActivity extends SkinActivity {
+public class MainActivity extends CustomActivity {
     @Id(R.id.tv_startActivity)
     TextView tv_startActivity;
     @Id(R.id.tv_content)
