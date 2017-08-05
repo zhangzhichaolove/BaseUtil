@@ -1,5 +1,6 @@
 package com.chao.baseutil;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -7,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 
 import com.chao.baselib.log.LogUtils;
@@ -39,7 +41,7 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
         super(context, attrs, defStyleAttr);
         ViewConfiguration configuration = ViewConfiguration.get(context);
         mTouchSlop = configuration.getScaledPagingTouchSlop();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 6; i++) {
             ImageView iv = new ImageView(context);
             iv.setImageResource(R.mipmap.s11);
             iv.setOnClickListener(this);
@@ -115,31 +117,72 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
 
     @Override
     protected void onLayout(boolean b, int i, int i1, int i2, int i3) {
-        if (!isOpen) {
-            for (int j = 0; j < getChildCount(); j++) {
-                View childAt = getChildAt(j);
-                if (getChildCount() == 1) {
-                    childAt.layout(0, 0, SIZE, SIZE);
-                }
-                if (getChildCount() > 1) {
-                    int offsetX = SIZE + j * SIZE / 2;
-                    childAt.layout(closeWidth - offsetX, 0, closeWidth - offsetX + SIZE, SIZE);
-                }
+//        if (!isOpen) {
+        for (int j = 0; j < getChildCount(); j++) {
+            View childAt = getChildAt(j);
+            if (getChildCount() == 1) {
+                childAt.layout(0, 0, SIZE, SIZE);
             }
-        } else {
-            for (int j = 0; j < getChildCount(); j++) {
-                View childAt = getChildAt(j);
-                childAt.layout(j * SIZE + (j * CLEARANCE), 0, j * SIZE + SIZE + (j * CLEARANCE), SIZE);
+            if (getChildCount() > 1) {
+                int offsetX = SIZE + j * SIZE / 2;
+                childAt.layout(closeWidth - offsetX, 0, closeWidth - offsetX + SIZE, SIZE);
             }
         }
+//        } else {
+//            for (int j = 0; j < getChildCount(); j++) {
+//                View childAt = getChildAt(j);
+//                childAt.layout(j * SIZE + (j * CLEARANCE), 0, j * SIZE + SIZE + (j * CLEARANCE), SIZE);
+//            }
+//        }
     }
 
     @Override
     public void onClick(View view) {
         if (view instanceof ImageView) {
-            isOpen = !isOpen;
             scrollTo(0, 0);
-            requestLayout();
+            if (!isOpen) {
+                open();
+            } else {
+                close();
+            }
+            isOpen = !isOpen;
+        }
+    }
+
+
+    public void open() {
+        for (int i = getChildCount() - 1; i > 0; i--) {
+            ValueAnimator left = ValueAnimator.ofFloat(i * SIZE / 2, i * SIZE + i * CLEARANCE).setDuration(500);
+            left.setInterpolator(new BounceInterpolator());
+            final int finalI = i;
+            left.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    float va = (float) valueAnimator.getAnimatedValue();
+                    LogUtils.showTagE(va + "");
+                    getChildAt(getChildCount() - 1 - finalI).setX(va);
+                    requestLayout();
+                }
+            });
+            left.start();
+        }
+    }
+
+    public void close() {
+        for (int i = getChildCount() - 1; i > 0; i--) {
+            ValueAnimator left = ValueAnimator.ofFloat(i * SIZE + i * CLEARANCE, i * SIZE / 2).setDuration(500);
+            left.setInterpolator(new BounceInterpolator());
+            final int finalI = i;
+            left.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    float va = (float) valueAnimator.getAnimatedValue();
+                    LogUtils.showTagE(va + "");
+                    getChildAt(getChildCount() - 1 - finalI).setX(va);
+                    requestLayout();
+                }
+            });
+            left.start();
         }
     }
 
@@ -149,7 +192,7 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE:
-                if (isOpen) {
+                if (isOpen && width > getWidth()) {
                     float moveX = x - event.getX();
                     if (getScrollX() + moveX < 0) {
                         scrollTo(0, 0);
