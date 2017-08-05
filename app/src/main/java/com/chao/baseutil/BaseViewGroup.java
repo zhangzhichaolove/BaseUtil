@@ -22,6 +22,8 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
     private boolean isOpen = false;
     private int mTouchSlop;
     private int width;
+    private int closeWidth;
+    private int sixWidth;
     private GestureDetector gestureDetector;
 
 
@@ -44,6 +46,8 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
             addView(iv);
         }
         width = getChildCount() * SIZE + getChildCount() * CLEARANCE - CLEARANCE;
+        closeWidth = getChildCount() * SIZE - SIZE / 2 * (getChildCount() - 1);
+        sixWidth = 6 * SIZE - SIZE / 2 * (6 - 1);
         setOnClickListener(this);
         setListener(context);
     }
@@ -119,7 +123,6 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
                 }
                 if (getChildCount() > 1) {
                     int offsetX = SIZE + j * SIZE / 2;
-                    int closeWidth = getChildCount() * SIZE - SIZE / 2 * (getChildCount() - 1);
                     childAt.layout(closeWidth - offsetX, 0, closeWidth - offsetX + SIZE, SIZE);
                 }
             }
@@ -195,6 +198,7 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         //super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), SIZE);
+        //setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), SIZE);
+        setMeasuredDimension(isOpen ? 6 * SIZE + 6 * CLEARANCE - CLEARANCE : sixWidth, SIZE);
     }
 }

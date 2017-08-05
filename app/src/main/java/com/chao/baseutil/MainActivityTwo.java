@@ -7,12 +7,12 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
-import com.chao.baselib.base.activity.SwipeBackActivity;
+import com.chao.baselib.base.activity.SkinActivity;
 import com.chao.baselib.injection.Id;
 import com.chao.baselib.log.LogUtils;
 import com.chao.baselib.variable.GeneralVar;
 
-public class MainActivityTwo extends SwipeBackActivity {
+public class MainActivityTwo extends SkinActivity {
     @Id(R.id.tv_startActivity)
     TextView tv_startActivity;
 
