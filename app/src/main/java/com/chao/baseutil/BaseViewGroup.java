@@ -12,6 +12,7 @@ import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 
 import com.chao.baselib.log.LogUtils;
+import com.chao.baselib.variable.GeneralVar;
 
 /**
  * Created by Chao on 2017/8/1.
@@ -41,7 +42,7 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
         super(context, attrs, defStyleAttr);
         ViewConfiguration configuration = ViewConfiguration.get(context);
         mTouchSlop = configuration.getScaledPagingTouchSlop();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 10; i++) {
             ImageView iv = new ImageView(context);
             iv.setImageResource(R.mipmap.s11);
             iv.setOnClickListener(this);
@@ -192,7 +193,7 @@ public class BaseViewGroup extends ViewGroup implements View.OnClickListener {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE:
-                if (isOpen && width > getWidth()) {
+                if (isOpen && width > GeneralVar.getScreenWidth()) {
                     float moveX = x - event.getX();
                     if (getScrollX() + moveX < 0) {
                         scrollTo(0, 0);
